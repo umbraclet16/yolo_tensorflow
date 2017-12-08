@@ -40,7 +40,9 @@ class Detector(object):
             cv2.rectangle(img, (x - w, y - h), (x + w, y + h), (0, 255, 0), 2)
             cv2.rectangle(img, (x - w, y - h - 20),
                           (x + w, y - h), (125, 125, 125), -1)
-            cv2.putText(img, result[i][0] + ' : %.2f' % result[i][5], (x - w + 5, y - h - 7), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.CV_AA)
+            #cv2.putText(img, result[i][0] + ' : %.2f' % result[i][5], (x - w + 5, y - h - 7), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.CV_AA)
+            # opencv3 changes from CV_AA to LINE_AA
+            cv2.putText(img, result[i][0] + ' : %.2f' % result[i][5], (x - w + 5, y - h - 7), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
 
     def detect(self, img):
         img_h, img_w, _ = img.shape
